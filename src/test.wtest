@@ -1,7 +1,13 @@
 import capos.*
 
 test "encontrar artefactos" {
+	rolando.encuentra(espada)
+	rolando.agarra(espada)
+	rolando.encuentra(libro)
+	rolando.agarra(libro)
+	rolando.encuentra(collar)
 	
+
 }
 
 test "castillo" {
