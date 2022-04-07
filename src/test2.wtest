@@ -1,0 +1,15 @@
+import capos.*
+//test "batalla" {
+//
+//	rolando.capacidad
+//
+//}
+
+test "poder de Rolando"{
+	
+	rolando.capacidad(3)
+	rolando.agarra(espada)
+	rolando.agarra(armadura)
+	rolando.agarra(collar)
+	assert.equals(19, rolando.poder())
+}
