@@ -39,10 +39,16 @@ object rolando {
 	}
 	
 	method poderArtefactoMasPoderosoDelCastillo(){
-		return castilloDePiedra.poderArtefactoMasPoderoso()
+		return castilloDePiedra.poderArtefactoMasPoderoso(duenio)
 		
 	}
+	
+	method puedeVencer(enemigo){
+		return self.poder()> enemigo.poderDePelea()
+	}
+		
 }	
+
 ///////
 
 object espada{
@@ -146,4 +152,61 @@ object castilloDePiedra{
  		return armasRolando.max({_arma => _arma.poder(duenio)})
 	 	}
  
+	}
+
+	///////
+	
+	object archibaldo{
+		method poderDePelea()= 16
+		method morada()= palacio	
+		
+	}
+	
+	//////
+	
+	object caterina{
+		method poderDePelea()=28
+		method morada() = fortaleza
+	}
+	
+	//////
+	
+	object astra{
+		method poderDePelea()=14
+		method morada()=torre
+		
+	}
+	
+	/////
+	
+	object palacio{}
+	
+	//////
+	
+	object fortaleza{}
+	
+	//////
+	
+	object torre{}
+	
+	//////
+	
+	object erethia{
+		
+		const enemigos = #{archibaldo,caterina,astra}
+	
+		method enemigosVencibles(capo){
+			return enemigos.filter({enemigo => capo.puedeVencer(enemigo)})
+		}
+		
+		method moradasConquistables(capo){
+			return self.enemigosVencibles(capo).map({enemigo=>enemigo.morada()})
+		}	
+		
+		method poderoso(capo){
+			const elMasPoderoso = enemigos.max({enemigo => enemigo.poderDePelea()})
+			return capo.puedeVencer(elMasPoderoso)
+			
+		}
+	
 	}
